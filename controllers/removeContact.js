@@ -1,10 +1,13 @@
-const contactsRepository = require("../models/contacts");
+const { Contact } = require("../db");
 
-const removeContact = async (req, res, next) => {
+const removeContact = async (req, res) => {
   const { contactId } = req.params;
 
-  await contactsRepository.removeContact(contactId);
-  res.status(204).send();
+  const result = await Contact.findByIdAndDelete(contactId);
+  if (result) {
+    res.status(204).send();
+  }
+  res.json(result);
 };
 
 module.exports = {

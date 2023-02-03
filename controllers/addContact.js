@@ -1,9 +1,9 @@
-const contactsRepository = require("../models/contacts");
+const { Contact } = require("../db");
 
-const addContact = async (req, res, next) => {
+const addContact = async (req, res) => {
   const { name, email, phone } = req.body;
 
-  const result = await contactsRepository.addContact({ name, email, phone });
+  const result = await Contact.create({ name, email, phone });
   res.json(result);
 };
 

@@ -1,11 +1,15 @@
 const { Contact } = require("../db");
 
-const updateContact = async (req, res, next) => {
+const updateStatusContact = async (req, res) => {
   const { contactId } = req.params;
-  const { name, email, phone } = req.body;
+  const { favorite } = req.body;
+
+  if (!favorite) {
+    res.json({ message: "missing field favorite" });
+  }
 
   const filter = { _id: contactId };
-  const update = { name, email, phone };
+  const update = { favorite };
 
   await Contact.findOneAndUpdate(filter, update);
   const result = await Contact.findOne(filter);
@@ -13,5 +17,5 @@ const updateContact = async (req, res, next) => {
 };
 
 module.exports = {
-  updateContact,
+  updateStatusContact,
 };
