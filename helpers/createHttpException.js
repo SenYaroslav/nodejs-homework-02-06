@@ -1,6 +1,6 @@
-const createHttpException = (status, message) => {
+const createHttpException = (statusIn, message) => {
   const err = new Error(message);
-  err.status = status;
+  err.status = statusIn;
   console.log('err >>>  ', err)
   return err;
 };
