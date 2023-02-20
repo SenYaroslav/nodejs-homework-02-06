@@ -4,15 +4,12 @@ const { createHttpException } = require("../../helpers");
 const multer = require("multer");
 const path = require("path");
 
-const uploadDir =
-  "C:UsersLenovo123123DocumentsGitHub\nodejs-homework-02-06\tmp";
-const storeImage =
-  // eslint-disable-next-line no-useless-escape
-  "C:UsersLenovo123123DocumentsGitHub\nodejs-homework-02-06\public\avatars";
+const tempDirAvatar = 'C:/Users/Lenovo123123/Documents/GitHub/nodejs-homework-02-06/temp'
+const storeImage = "C:/Users/Lenovo123123/Documents/GitHub/nodejs-homework-02-06/public/avatars";
 
 const multerConfig = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, uploadDir);
+    cb(null, tempDirAvatar);
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);

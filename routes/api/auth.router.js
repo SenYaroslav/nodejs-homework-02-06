@@ -30,7 +30,7 @@ router.get(
 router.patch(
   "/avatars",
   authMiddleware,
-  userController.upload.single('avatar'),
+  userController.upload.single("avatar"),
   controllerExceptionWrapper(userController.updateAvatar)
 );
 
