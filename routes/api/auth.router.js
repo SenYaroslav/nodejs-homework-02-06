@@ -27,5 +27,11 @@ router.get(
   authMiddleware,
   controllerExceptionWrapper(userController.current)
 );
+router.patch(
+  "/avatars",
+  authMiddleware,
+  userController.upload.single("avatar"),
+  controllerExceptionWrapper(userController.updateAvatar)
+);
 
 module.exports = router;
